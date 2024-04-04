@@ -9,7 +9,7 @@ check := {
   val cmd = "target/universal/stage/bin/hello"
   val cmd0 =
     if (sys.props("os.name").toLowerCase(java.util.Locale.ROOT).contains("windows"))
-      cmd + ".bat"
+      cmd + ".cmd"
     else
       cmd
   val b = new ProcessBuilder(cmd0)

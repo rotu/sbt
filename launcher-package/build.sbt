@@ -268,7 +268,7 @@ val root = (project in file(".")).
       val t = (target in Universal).value
       val prev = (mappings in Universal).value
       val BinSbt = "bin" + java.io.File.separator + "sbt"
-      val BinBat = BinSbt + ".bat"
+      val BinCmd = BinSbt + ".cmd"
       prev.toList map {
         case (k, BinSbt) =>
           import java.nio.file.{Files, FileSystems}
@@ -283,12 +283,12 @@ val root = (project in file(".")).
           }
 
           (t / "sbt", BinSbt)
-        case (k, BinBat) =>
+        case (k, BinCmd) =>
           val x = IO.read(k)
-          IO.write(t / "sbt.bat", x.replaceAllLiterally(
+          IO.write(t / "sbt.cmd", x.replaceAllLiterally(
             "set init_sbt_version=_to_be_replaced",
             s"set init_sbt_version=$sbtVersionToRelease"))
-          (t / "sbt.bat", BinBat)
+          (t / "sbt.cmd", BinCmd)
         case (k, v) => (k, v)
       }
     },
@@ -434,7 +434,7 @@ lazy val dist = (project in file("dist"))
     exportRepoUsingCoursier := {
       val outDirectory = exportRepoCsrDirectory.value
       val csr =
-        if (isWindows) (baseDirectory in LocalRootProject).value / "bin" / "coursier.bat"
+        if (isWindows) (baseDirectory in LocalRootProject).value / "bin" / "coursier.cmd"
         else (baseDirectory in LocalRootProject).value / "bin" / "coursier"
       val cache = target.value / "coursier"
       IO.delete(cache)

@@ -2,7 +2,7 @@
 
 # Set the java args
 
-#-mem 1024 was added in sbt.bat as default
+#-mem 1024 was added in sbt.cmd as default
 
 #-Xms1024m
 #-Xmx1024m

@@ -331,7 +331,7 @@ class NetworkClient(
         val cmd = arguments.sbtLaunchJar match {
           case Some(lj) =>
             if (log) {
-              val sbtScript = if (Properties.isWin) "sbt.bat" else "sbt"
+              val sbtScript = if (Properties.isWin) "sbt.cmd" else "sbt"
               console.appendLog(Level.Warn, s"server is started using sbt-launch jar directly")
               console.appendLog(
                 Level.Warn,
@@ -1078,7 +1078,7 @@ object NetworkClient {
   private[client] val noStdErr = "--no-stderr"
   private[client] val sbtBase = "--sbt-base-directory"
   private[client] def parseArgs(args: Array[String]): Arguments = {
-    val defaultSbtScript = if (Properties.isWin) "sbt.bat" else "sbt"
+    val defaultSbtScript = if (Properties.isWin) "sbt.cmd" else "sbt"
     var sbtScript = Properties.propOrNone("sbt.script")
     var launchJar: Option[String] = None
     var bsp = false

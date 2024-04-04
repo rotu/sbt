@@ -1061,7 +1061,7 @@ lazy val sbtClientProj = (project in file("client"))
     ),
     buildThinClient := {
       val isFish = Def.spaceDelimited("").parsed.headOption.fold(false)(_ == "--fish")
-      val ext = if (isWin) ".bat" else if (isFish) ".fish" else ".sh"
+      val ext = if (isWin) ".cmd" else if (isFish) ".fish" else ".sh"
       val output = target.value.toPath / "bin" / s"${if (isFish) "fish-" else ""}client$ext"
       java.nio.file.Files.createDirectories(output.getParent)
       val cp = (Compile / fullClasspathAsJars).value.map(_.data)

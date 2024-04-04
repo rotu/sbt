@@ -62,7 +62,7 @@ object BuildServerConnection {
   private def sbtScriptInPath: Option[String] = {
     // For those who use an old sbt script, the -Dsbt.script is not set
     // As a fallback we try to find the sbt script in $PATH
-    val fileName = if (Properties.isWin) "sbt.bat" else "sbt"
+    val fileName = if (Properties.isWin) "sbt.cmd" else "sbt"
     val envPath = sys.env.collectFirst {
       case (k, v) if k.toUpperCase() == "PATH" => v
     }

@@ -10,7 +10,7 @@ object SbtRunnerTest extends SimpleTestSuite with PowerAssertions {
 
   lazy val isWindows: Boolean = sys.props("os.name").toLowerCase(java.util.Locale.ENGLISH).contains("windows")
   lazy val sbtScript =
-    if (isWindows) new File("target/universal/stage/bin/sbt.bat")
+    if (isWindows) new File("target/universal/stage/bin/sbt.cmd")
     else new File("target/universal/stage/bin/sbt")
 
   def sbtProcess(args: String*) = sbtProcessWithOpts(args: _*)("", "")
